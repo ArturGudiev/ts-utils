@@ -22,3 +22,22 @@ export function printSeveralInColorInline(messages: IMessageColorInline[]) {
         printInColorInline(obj.message, obj.color);
     });
 }
+
+
+export function getStringWithHighlightedSymbols(message: string, indexesToColor: number[]): string {
+    const coloredString = message
+      .split('')
+      .map((char, index) => (indexesToColor.includes(index) ? chalk.red(char) : char))
+      .join('');
+    return coloredString;
+}
+
+export function printStringWithHighlightedSymbols(message: string, indexesToColor: number[]) {
+    // const coloredString = message
+    //   .split('')
+    //   .map((char, index) => (indexesToColor.includes(index) ? chalk.red(char) : char))
+    //   .join('');
+    // // return coloredString;
+    const res = getStringWithHighlightedSymbols(message, indexesToColor)
+    console.log(res);
+}
